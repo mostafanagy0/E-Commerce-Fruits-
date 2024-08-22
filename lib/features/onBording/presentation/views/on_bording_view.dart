@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/features/onBording/presentation/widgets/on_bording_view_body.dart';
 
 class OnBordingView extends StatelessWidget {
   const OnBordingView({super.key});
@@ -6,6 +7,8 @@ class OnBordingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      body: OnBordingViewBody(),
+    );
   }
 }

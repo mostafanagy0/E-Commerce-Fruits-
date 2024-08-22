@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_app/features/Splash/presentation/On_Bording/presentation/views/on_bording_view.dart';
 import 'package:fruits_app/features/Splash/presentation/Views/splash_view.dart';
+import 'package:fruits_app/features/onBording/presentation/views/on_bording_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
