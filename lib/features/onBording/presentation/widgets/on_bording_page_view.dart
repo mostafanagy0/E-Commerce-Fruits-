@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/utils/app_colors.dart';
 import 'package:fruits_app/core/utils/app_images.dart';
+import 'package:fruits_app/core/utils/app_text_style.dart';
 import 'package:fruits_app/features/onBording/presentation/widgets/page_view_item.dart';
 
 class OnBordingPageView extends StatelessWidget {
@@ -20,12 +22,23 @@ class OnBordingPageView extends StatelessWidget {
             backgroundImage: Assets.imagesPageItemBackgroundImage,
             subTitel:
                 'اكتشف تجربة تسوق فريدة مع FruitHUB. استكشف مجموعتنا الواسعة من الفواكه الطازجة الممتازة واحصل على أفضل العروض والجودة العالية.',
-            titel: const Row(
+            titel: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('مرحبًا بك في'),
-                Text('HUB'),
-                Text('Fruit'),
+                const Text(
+                  'مرحبًا بك في',
+                  style: TextStyles.bold23,
+                ),
+                Text(
+                  ' Hub',
+                  style: TextStyles.bold23
+                      .copyWith(color: AppColors.secondryColor),
+                ),
+                Text(
+                  'Fruit',
+                  style:
+                      TextStyles.bold23.copyWith(color: AppColors.primaryColor),
+                ),
               ],
             )),
         PageViewItem(
