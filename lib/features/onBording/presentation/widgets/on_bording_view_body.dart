@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/constants.dart';
+import 'package:fruits_app/core/services/shered_ferfernces_singleton.dart';
 import 'package:fruits_app/core/widgets/custom_button.dart';
+import 'package:fruits_app/features/auth/presentation/views/login_view.dart';
 import 'package:fruits_app/features/onBording/presentation/widgets/custom_dots_indicator.dart';
 import 'package:fruits_app/features/onBording/presentation/widgets/on_bording_page_view.dart';
 
@@ -52,8 +55,11 @@ class _OnBordingViewBodyState extends State<OnBordingViewBody> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: CustomButton(
+              onPressed: () {
+                prefs.setBool(kIsOnBordingVisited, true);
+                Navigator.of(context).pushReplacementNamed(LoginView.routeName);
+              },
               text: 'ابدأ الان',
-              onPressed: () {},
             ),
           ),
         ),
