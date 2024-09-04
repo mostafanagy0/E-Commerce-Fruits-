@@ -56,7 +56,7 @@ class _OnBordingViewBodyState extends State<OnBordingViewBody> {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: CustomButton(
               onPressed: () {
-                prefs.setBool(kIsOnBordingVisited, true);
+                Prefs.setBool(kIsOnBordingVisited, true);
                 Navigator.of(context).pushReplacementNamed(LoginView.routeName);
               },
               text: 'ابدأ الان',

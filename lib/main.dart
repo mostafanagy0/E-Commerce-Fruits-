@@ -7,7 +7,7 @@ import 'package:fruits_app/generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await prefs.init();
+  await Prefs.init();
   runApp(const MyApp());
 }
 
