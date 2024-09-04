@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_app/constants.dart';
+import 'package:fruits_app/core/helper_funcitons/functions/navigation.dart';
 import 'package:fruits_app/core/services/shered_ferfernces_singleton.dart';
 import 'package:fruits_app/core/widgets/custom_button.dart';
 import 'package:fruits_app/features/auth/presentation/views/login_view.dart';
@@ -57,7 +58,8 @@ class _OnBordingViewBodyState extends State<OnBordingViewBody> {
             child: CustomButton(
               onPressed: () {
                 Prefs.setBool(kIsOnBordingVisited, true);
-                Navigator.of(context).pushReplacementNamed(LoginView.routeName);
+                customPushReplacementNamedNavigaton(
+                    context, LoginView.routeName);
               },
               text: 'ابدأ الان',
             ),

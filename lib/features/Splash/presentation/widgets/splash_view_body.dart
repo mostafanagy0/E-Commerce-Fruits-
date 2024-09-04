@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fruits_app/constants.dart';
+import 'package:fruits_app/core/helper_funcitons/functions/navigation.dart';
 import 'package:fruits_app/core/services/shered_ferfernces_singleton.dart';
 import 'package:fruits_app/core/utils/app_images.dart';
 import 'package:fruits_app/features/auth/presentation/views/login_view.dart';
@@ -49,9 +50,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       const Duration(seconds: 3),
       () {
         if (isOnBordingVisited) {
-          Navigator.pushReplacementNamed(context, LoginView.routeName);
+          customPushReplacementNavigaton(context, const LoginView());
         } else {
-          Navigator.pushReplacementNamed(context, OnBordingView.routeName);
+          customPushReplacementNavigaton(context, OnBordingView.routeName);
         }
       },
     );
