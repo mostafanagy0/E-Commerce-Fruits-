@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/helper_funcitons/functions/navigation.dart';
 import 'package:fruits_app/core/widgets/custom_button.dart';
 import 'package:fruits_app/core/widgets/custom_text_field.dart';
+import 'package:fruits_app/features/auth/presentation/views/signup_view.dart';
 import 'package:fruits_app/features/auth/presentation/widgets/custom_account_state.dart';
 import 'package:fruits_app/features/auth/presentation/widgets/custom_forget_password_text.dart';
 import 'package:fruits_app/features/auth/presentation/widgets/custom_sociall_botton_form.dart';
@@ -39,8 +41,12 @@ class LoginViewBody extends StatelessWidget {
                 onPressed: () {},
               ),
               const SizedBox(height: 33),
-              const CustomAccountState(
-                  text1: 'لا تمتلك حساب ؟', text2: 'قم بانشاء حساب'),
+              CustomAccountState(
+                  onTap: () {
+                    customPushNavigaton(context, const SignupView());
+                  },
+                  text1: 'لا تمتلك حساب ؟',
+                  text2: 'قم بانشاء حساب'),
               const SizedBox(height: 16),
               const OrDivider(),
               const SizedBox(height: 16),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/utils/app_colors.dart';
 import 'package:fruits_app/core/utils/app_text_style.dart';
 
 AppBar buildAppBar(context, {required String title}) {
@@ -13,6 +14,9 @@ AppBar buildAppBar(context, {required String title}) {
         onTap: () {
           Navigator.pop(context);
         },
-        child: const Icon(Icons.arrow_back_ios_new)),
+        child: const Icon(
+          Icons.arrow_back_ios_new,
+          color: AppColors.primaryColor,
+        )),
   );
 }
