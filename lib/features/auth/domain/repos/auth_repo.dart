@@ -6,5 +6,5 @@ import 'package:fruits_app/features/auth/domain/entites/uesr_entite.dart';
 
 abstract class AuthRepo {
   Future<Either<Failures, UesrEntite>> CreateUserWithEmailAndPassWord(
-      String email, String passWord);
+      String email, String passWord, String name);
 }
