@@ -20,12 +20,12 @@ class LoginViewBody extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 24),
-              const CustomTextField(
+              const CustomTextFormField(
                 hintText: 'البريد الالكتروني',
                 textInputType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 16),
-              const CustomTextField(
+              const CustomTextFormField(
                 hintText: 'كلمه المرور',
                 textInputType: TextInputType.visiblePassword,
                 suffexIcon: Icon(
