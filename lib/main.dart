@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:fruits_app/core/helper_funcitons/functions/get_it.dart';
 import 'package:fruits_app/core/helper_funcitons/on_generate_routes.dart';
 import 'package:fruits_app/core/services/shered_ferfernces_singleton.dart';
 import 'package:fruits_app/core/utils/app_colors.dart';
@@ -14,6 +15,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await Prefs.init();
+  setupGetIt();
   runApp(const MyApp());
 }
 

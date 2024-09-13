@@ -11,10 +11,10 @@ class AuthTepoImpl extends AuthRepo {
 
   AuthTepoImpl({required this.firebaseAuthService});
   @override
-  Future<Either<Failures, UesrEntite>> CreateUserWithEmailAndPassWord(
+  Future<Either<Failures, UesrEntite>> createUserWithEmailAndPassWord(
       String email, String passWord, String name) async {
     try {
-      var user = await firebaseAuthService.CreateUserWithEmailAndPassWord(
+      var user = await firebaseAuthService.createUserWithEmailAndPassWord(
           email: email, passWord: passWord);
       return right(UserModel.fromFirebaseUser(user));
     } on CustomException catch (e) {

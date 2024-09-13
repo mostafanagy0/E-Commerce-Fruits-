@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_app/core/errors/exce/Exceptions.dart';
 
 class FirebaseAuthService {
-  Future<User> CreateUserWithEmailAndPassWord(
+  Future<User> createUserWithEmailAndPassWord(
       {required String email, required String passWord}) async {
     try {
       final credential =
