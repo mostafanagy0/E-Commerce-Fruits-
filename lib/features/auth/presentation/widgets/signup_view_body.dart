@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/widgets/custom_button.dart';
 import 'package:fruits_app/core/widgets/custom_text_field.dart';
+import 'package:fruits_app/core/widgets/password_field.dart';
 import 'package:fruits_app/features/auth/presentation/cubits/sign_up_cubit/sign_up_cubit.dart';
 import 'package:fruits_app/features/auth/presentation/widgets/custom_account_state.dart';
 import 'package:fruits_app/features/auth/presentation/widgets/termes_and_condition.dart';
@@ -43,16 +44,11 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     hintText: 'البريد الإلكتروني',
                     textInputType: TextInputType.emailAddress),
                 const SizedBox(height: 16),
-                CustomTextFormField(
-                    onSaved: (value) {
-                      passWord = value!;
-                    },
-                    suffexIcon: const Icon(
-                      Icons.remove_red_eye,
-                      color: Color(0xffC9CECF),
-                    ),
-                    hintText: 'كلمة المرور',
-                    textInputType: TextInputType.visiblePassword),
+                PasswordField(
+                  onSaved: (value) {
+                    passWord = value!;
+                  },
+                ),
                 const SizedBox(height: 16),
                 const TermsAndConditionsWidget(),
                 const SizedBox(height: 30),
