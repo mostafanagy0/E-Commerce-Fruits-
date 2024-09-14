@@ -1,3 +1,5 @@
+import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruits_app/core/errors/exce/Exceptions.dart';
 import 'package:fruits_app/core/errors/failures.dart';
@@ -22,6 +24,7 @@ class AuthTepoImpl extends AuthRepo {
         ServerFailure(e.message),
       );
     } catch (e) {
+      log('Exiption in createUserWithEmailAndPassWord ${e.toString()}');
       return left(ServerFailure('An Error Occourred , Pleace Try Again Later'));
     }
   }
