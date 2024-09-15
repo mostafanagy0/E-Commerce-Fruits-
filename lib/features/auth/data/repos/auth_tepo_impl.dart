@@ -25,6 +25,23 @@ class AuthTepoImpl extends AuthRepo {
       );
     } catch (e) {
       log('Exiption in createUserWithEmailAndPassWord ${e.toString()}');
+      return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+    }
+  }
+
+  @override
+  Future<Either<Failures, UesrEntite>> signInWithEmailAndPassword(
+      String email, String passWord, String name) async {
+    try {
+      var user = await firebaseAuthService.signInWithEmailAndPassword(
+          email: email, passWord: passWord);
+      return right(UserModel.fromFirebaseUser(user));
+    } on CustomException catch (e) {
+      return left(
+        ServerFailure(e.message),
+      );
+    } catch (e) {
+      log('Exiption in signInWithEmailAndPassword ${e.toString()}');
       return left(ServerFailure('An Error Occourred , Pleace Try Again Later'));
     }
   }
