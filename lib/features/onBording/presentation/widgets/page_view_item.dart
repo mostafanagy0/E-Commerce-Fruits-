@@ -4,7 +4,7 @@ import 'package:fruits_app/constants.dart';
 import 'package:fruits_app/core/helper_funcitons/functions/navigation.dart';
 import 'package:fruits_app/core/services/shered_ferfernces_singleton.dart';
 import 'package:fruits_app/core/utils/app_text_style.dart';
-import 'package:fruits_app/features/auth/presentation/views/login_view.dart';
+import 'package:fruits_app/features/auth/presentation/views/signin_view.dart';
 
 class PageViewItem extends StatelessWidget {
   const PageViewItem(
@@ -48,7 +48,7 @@ class PageViewItem extends StatelessWidget {
                       onTap: () {
                         Prefs.setBool(kIsOnBordingVisited, true);
                         customPushReplacementNavigaton(
-                            context, LoginView.routeName);
+                            context, SignInView.routeName);
                       },
                       child: Text(
                         'تخط',

@@ -8,8 +8,8 @@ import 'package:fruits_app/features/auth/presentation/widgets/custom_forget_pass
 import 'package:fruits_app/features/auth/presentation/widgets/custom_sociall_botton_form.dart';
 import 'package:fruits_app/features/auth/presentation/widgets/or_divider.dart';
 
-class LoginViewBody extends StatelessWidget {
-  const LoginViewBody({super.key});
+class SignInViewBody extends StatelessWidget {
+  const SignInViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {

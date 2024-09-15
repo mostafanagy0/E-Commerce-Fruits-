@@ -8,5 +8,7 @@ abstract class AuthRepo {
   Future<Either<Failures, UesrEntite>> createUserWithEmailAndPassWord(
       String email, String passWord, String name);
   Future<Either<Failures, UesrEntite>> signInWithEmailAndPassword(
-      String email, String passWord, String name);
+    String email,
+    String passWord,
+  );
 }

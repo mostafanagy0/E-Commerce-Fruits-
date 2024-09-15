@@ -31,7 +31,7 @@ class AuthTepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failures, UesrEntite>> signInWithEmailAndPassword(
-      String email, String passWord, String name) async {
+      String email, String passWord) async {
     try {
       var user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, passWord: passWord);

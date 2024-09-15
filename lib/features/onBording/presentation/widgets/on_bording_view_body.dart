@@ -3,7 +3,7 @@ import 'package:fruits_app/constants.dart';
 import 'package:fruits_app/core/helper_funcitons/functions/navigation.dart';
 import 'package:fruits_app/core/services/shered_ferfernces_singleton.dart';
 import 'package:fruits_app/core/widgets/custom_button.dart';
-import 'package:fruits_app/features/auth/presentation/views/login_view.dart';
+import 'package:fruits_app/features/auth/presentation/views/signin_view.dart';
 import 'package:fruits_app/features/onBording/presentation/widgets/custom_dots_indicator.dart';
 import 'package:fruits_app/features/onBording/presentation/widgets/on_bording_page_view.dart';
 
@@ -59,7 +59,7 @@ class _OnBordingViewBodyState extends State<OnBordingViewBody> {
               onPressed: () {
                 Prefs.setBool(kIsOnBordingVisited, true);
                 customPushReplacementNamedNavigaton(
-                    context, LoginView.routeName);
+                    context, SignInView.routeName);
               },
               text: 'ابدأ الان',
             ),
