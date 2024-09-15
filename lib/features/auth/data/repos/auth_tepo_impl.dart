@@ -1,4 +1,4 @@
-import 'dart:nativewrappers/_internal/vm/lib/developer.dart';
+import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:fruits_app/core/errors/exce/Exceptions.dart';
@@ -8,10 +8,10 @@ import 'package:fruits_app/features/auth/data/models/user_model.dart';
 import 'package:fruits_app/features/auth/domain/entites/uesr_entite.dart';
 import 'package:fruits_app/features/auth/domain/repos/auth_repo.dart';
 
-class AuthTepoImpl extends AuthRepo {
+class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
 
-  AuthTepoImpl({required this.firebaseAuthService});
+  AuthRepoImpl({required this.firebaseAuthService});
   @override
   Future<Either<Failures, UesrEntite>> createUserWithEmailAndPassWord(
       String email, String passWord, String name) async {
@@ -42,7 +42,7 @@ class AuthTepoImpl extends AuthRepo {
       );
     } catch (e) {
       log('Exiption in signInWithEmailAndPassword ${e.toString()}');
-      return left(ServerFailure('An Error Occourred , Pleace Try Again Later'));
+      return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
   }
 }
