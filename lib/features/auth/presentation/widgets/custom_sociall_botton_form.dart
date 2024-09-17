@@ -28,7 +28,9 @@ class CustomSocialLoginForm extends StatelessWidget {
         SocialLoginButton(
           image: Assets.imagesFacebokIcon,
           title: 'تسجيل بواسطة فيسبوك',
-          onPressed: () {},
+          onPressed: () {
+            context.read<SigninCubit>().signInWithFacebook();
+          },
         ),
       ],
     );

@@ -12,4 +12,5 @@ abstract class AuthRepo {
     String passWord,
   );
   Future<Either<Failures, UesrEntite>> signInWithGoogle();
+  Future<Either<Failures, UesrEntite>> signInWithFacebook();
 }

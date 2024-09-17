@@ -24,8 +24,18 @@ class SigninCubit extends Cubit<SigninState> {
     emit(SigninLoding());
     final result = await authRepo.signInWithGoogle();
     result.fold(
-        (Failure) => emit(
-              Signinfailure(message: Failure.message),
+        (failure) => emit(
+              Signinfailure(message: failure.message),
+            ),
+        (uesrEntite) => emit(SigninSuccess(uesrEntite: uesrEntite)));
+  }
+
+  Future<void> signInWithFacebook() async {
+    emit(SigninLoding());
+    final result = await authRepo.signInWithFacebook();
+    result.fold(
+        (failure) => emit(
+              Signinfailure(message: failure.message),
             ),
         (UesrEntite) => emit(SigninSuccess(uesrEntite: UesrEntite)));
   }
