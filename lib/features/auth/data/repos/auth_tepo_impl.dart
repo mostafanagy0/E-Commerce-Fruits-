@@ -49,7 +49,11 @@ class AuthRepoImpl extends AuthRepo {
     try {
       var user = await firebaseAuthService.signInWithEmailAndPassword(
           email: email, passWord: passWord);
-      return right(UserModel.fromFirebaseUser(user));
+
+      var uesrEntite = await getUserData(uId: user.uid);
+      return right(
+        uesrEntite,
+      );
     } on CustomException catch (e) {
       return left(
         ServerFailure(e.message),
@@ -62,10 +66,16 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failures, UesrEntite>> signInWithGoogle() async {
+    User? user;
     try {
-      var user = await firebaseAuthService.signInWithGoogle();
-      return right(UserModel.fromFirebaseUser(user));
+      user = await firebaseAuthService.signInWithGoogle();
+      var uesrEntite = UserModel.fromFirebaseUser(user);
+      await addUserData(user: uesrEntite);
+      return right(uesrEntite);
     } catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUser();
+      }
       log('Exiption in signInWithGoogle ${e.toString()}');
       return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
@@ -73,10 +83,16 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<Either<Failures, UesrEntite>> signInWithFacebook() async {
+    User? user;
     try {
-      var user = await firebaseAuthService.signInWithFacebook();
-      return right(UserModel.fromFirebaseUser(user));
+      user = await firebaseAuthService.signInWithFacebook();
+      var uesrEntite = UserModel.fromFirebaseUser(user);
+      await addUserData(user: uesrEntite);
+      return right(uesrEntite);
     } catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUser();
+      }
       log('Exiption in signInWithFacebook ${e.toString()}');
       return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
@@ -85,6 +101,15 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future addUserData({required UesrEntite user}) async {
     await dataBaseService.addData(
-        path: BackendEndpoints.addUserData, data: user.toMap());
+        path: BackendEndpoints.addUserData,
+        data: user.toMap(),
+        documentId: user.uId);
+  }
+
+  @override
+  Future<UesrEntite> getUserData({required String uId}) async {
+    var userData = await dataBaseService.getData(
+        path: BackendEndpoints.getUserData, documentId: uId);
+    return UserModel.fromjson(userData);
   }
 }

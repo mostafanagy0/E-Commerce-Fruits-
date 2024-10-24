@@ -7,6 +7,16 @@ class UserModel extends UesrEntite {
   // we are created model from 'User' that return from firebase
   factory UserModel.fromFirebaseUser(User user) {
     return UserModel(
-        name: user.displayName ?? '', email: user.email ?? '', uId: user.uid);
+      name: user.displayName ?? '',
+      email: user.email ?? '',
+      uId: user.uid,
+    );
+  }
+  factory UserModel.fromjson(Map<String, dynamic> json) {
+    return UserModel(
+      name: json['name'],
+      email: json['email'],
+      uId: json['uId'],
+    );
   }
 }

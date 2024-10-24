@@ -52,7 +52,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         if (isOnBordingVisited) {
           customPushReplacementNavigaton(context, const SignInView());
         } else {
-          customPushReplacementNavigaton(context, OnBordingView.routeName);
+          customPushReplacementNavigaton(context, const OnBordingView());
         }
       },
     );
