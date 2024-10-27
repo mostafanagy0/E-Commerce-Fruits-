@@ -18,6 +18,10 @@ class Assets {
   /// assets/images/facebok_icon.svg
   static const String imagesFacebokIcon = "assets/images/facebok_icon.svg";
 
+  /// Assets for imagesFilter
+  /// assets/images/filter.svg
+  static const String imagesFilter = "assets/images/filter.svg";
+
   /// Assets for imagesGoogleIcon
   /// assets/images/google_icon.svg
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
@@ -61,5 +65,9 @@ class Assets {
   /// Assets for imagesProfileimage
   /// assets/images/profileimage.png
   static const String imagesProfileimage = "assets/images/profileimage.png";
+
+  /// Assets for imagesSearch
+  /// assets/images/search.svg
+  static const String imagesSearch = "assets/images/search.svg";
 }
 
