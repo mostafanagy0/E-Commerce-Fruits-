@@ -26,6 +26,10 @@ class Assets {
   /// assets/images/google_icon.svg
   static const String imagesGoogleIcon = "assets/images/google_icon.svg";
 
+  /// Assets for imagesGreenPicture
+  /// assets/images/green_picture.svg
+  static const String imagesGreenPicture = "assets/images/green_picture.svg";
+
   /// Assets for imagesIconBottom
   /// assets/images/icon_bottom.svg
   static const String imagesIconBottom = "assets/images/icon_bottom.svg";
@@ -69,5 +73,9 @@ class Assets {
   /// Assets for imagesSearch
   /// assets/images/search.svg
   static const String imagesSearch = "assets/images/search.svg";
+
+  /// Assets for imagesWatermelonTest
+  /// assets/images/watermelon_test.png
+  static const String imagesWatermelonTest = "assets/images/watermelon_test.png";
 }
 
