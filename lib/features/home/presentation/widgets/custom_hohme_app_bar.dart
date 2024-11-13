@@ -3,14 +3,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fruits_app/core/utils/app_images.dart';
 import 'package:fruits_app/core/utils/app_text_style.dart';
 
-class CustomHohmeAppBar extends StatelessWidget {
-  const CustomHohmeAppBar({super.key});
+class CustomHomeAppBar extends StatelessWidget {
+  const CustomHomeAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       trailing: Container(
-        padding: const EdgeInsets.all(16),
         decoration: const ShapeDecoration(
           color: Color(0xFFEEF8ED),
           shape: OvalBorder(),

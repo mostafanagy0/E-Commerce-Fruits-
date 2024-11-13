@@ -35,7 +35,7 @@ class CustomSearchTextFiled extends StatelessWidget {
             enabledBorder: buildBorder()),
       ),
     );
-  }
+  }  
 }
 
 OutlineInputBorder buildBorder() {
