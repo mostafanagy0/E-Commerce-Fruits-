@@ -10,7 +10,7 @@ class FeaturedItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var itemWidth = MediaQuery.of(context).size.width;
+    var itemWidth = MediaQuery.sizeOf(context).width - 32;
     return SizedBox(
       width: itemWidth,
       child: AspectRatio(
@@ -29,6 +29,9 @@ class FeaturedItem extends StatelessWidget {
             Container(
               width: itemWidth * 0.5,
               decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(4),
+                    topRight: Radius.circular(4)),
                 image: DecorationImage(
                     image: svg.Svg(Assets.imagesGreenPicture),
                     fit: BoxFit.fill),
