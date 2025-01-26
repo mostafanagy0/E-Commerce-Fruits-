@@ -15,9 +15,8 @@ class NavigationBarItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return isSelected
         ? ActiveIcon(
-            image: botomNavigationBarEntitey.activeIcon,
             text: botomNavigationBarEntitey.name,
-          )
-        : InActiveIcon(image: botomNavigationBarEntitey.inActiveIcon);
+            image: botomNavigationBarEntitey.activeIcon)
+        : InActiveItem(image: botomNavigationBarEntitey.inActiveIcon);
   }
 }

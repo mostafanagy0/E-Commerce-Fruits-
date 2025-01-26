@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruits_app/core/utils/app_colors.dart';
+import 'package:fruits_app/core/utils/app_text_style.dart';
 
-class InActiveIcon extends StatelessWidget {
-  const InActiveIcon({super.key, required this.image});
+class InActiveItem extends StatelessWidget {
+  const InActiveItem({super.key, required this.image});
+
   final String image;
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(image);
+    return Container(
+      color: Colors.transparent,
+      child: SvgPicture.asset(image),
+    );
   }
 }
 
@@ -39,7 +45,11 @@ class ActiveIcon extends StatelessWidget {
             const SizedBox(
               width: 4,
             ),
-            Text(text)
+            Text(
+              text,
+              style:
+                  TextStyles.semiBold11.copyWith(color: AppColors.primaryColor),
+            ),
           ],
         ),
       ),

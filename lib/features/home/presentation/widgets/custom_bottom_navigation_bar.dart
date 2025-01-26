@@ -3,7 +3,10 @@ import 'package:fruits_app/features/home/domain/entites/bottom_navigation_bar_en
 import 'package:fruits_app/features/home/presentation/widgets/navigation_bar_item.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({super.key});
+  const CustomBottomNavigationBar({
+    super.key,
+  });
+  //final ValueChanged<int>onItemTaped;
 
   @override
   State<CustomBottomNavigationBar> createState() =>
@@ -18,21 +21,22 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       height: 70,
       width: 375,
       decoration: const ShapeDecoration(
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-            ),
+        shadows: [
+          BoxShadow(
+            color: Color(0x19000000),
+            blurRadius: 25,
+            offset: Offset(0, -2),
+            spreadRadius: 0,
+          )
+        ],
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
           ),
-          shadows: [
-            BoxShadow(
-              color: Color(0x19000000),
-              blurRadius: 40,
-              offset: Offset(0, -2),
-              spreadRadius: 0,
-            )
-          ]),
+        ),
+      ),
       child: Row(
           children: bottomNavigatomBarItems.asMap().entries.map((e) {
         var index = e.key;
@@ -42,7 +46,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                selectedIndex == index;
+                selectedIndex = index;
               });
             },
             child: NavigationBarItem(
