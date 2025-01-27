@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:fruits_app/features/auth/domain/entites/uesr_entite.dart';
-import 'package:fruits_app/features/auth/domain/repos/auth_repo.dart';
+import 'package:fruits_app/features/auth/data/repos/auth_repo.dart';
 import 'package:meta/meta.dart';
 
 part 'signin_state.dart';

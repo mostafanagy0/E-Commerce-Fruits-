@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_app/core/widgets/build_app_bar_auth.dart';
-import 'package:fruits_app/features/auth/domain/repos/auth_repo.dart';
+import 'package:fruits_app/features/auth/data/repos/auth_repo.dart';
 import 'package:fruits_app/features/auth/presentation/cubits/sign_in_cubit/signin_cubit.dart';
 import 'package:fruits_app/features/auth/presentation/widgets/signin_view_body_bloc_consumer.dart';
 

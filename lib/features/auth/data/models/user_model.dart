@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruits_app/features/auth/domain/entites/uesr_entite.dart';
 
-class UserModel extends UesrEntite {
+class UserModel extends UesrEntity {
   UserModel({required super.name, required super.email, required super.uId});
 
   // we are created model from 'User' that return from firebase
@@ -18,5 +18,19 @@ class UserModel extends UesrEntite {
       email: json['email'],
       uId: json['uId'],
     );
+  }
+  factory UserModel.fromEntity(UesrEntity userEntity) {
+    return UserModel(
+      name: userEntity.name,
+      email: userEntity.email,
+      uId: userEntity.uId,
+    );
+  }
+  toMap() {
+    return {
+      'name': name,
+      'email': email,
+      'uId': uId,
+    };
   }
 }

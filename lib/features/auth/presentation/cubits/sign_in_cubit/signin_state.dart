@@ -8,7 +8,7 @@ final class SigninInitial extends SigninState {}
 final class SigninLoding extends SigninState {}
 
 final class SigninSuccess extends SigninState {
-  final UesrEntite uesrEntite;
+  final UesrEntity uesrEntite;
 
   SigninSuccess({required this.uesrEntite});
 }
