@@ -45,7 +45,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       ],
     );
   }
-
+  
   void excuteNaviagtion() {
     bool isOnBordingVisited = Prefs.getBool(kIsOnBordingVisited);
     Future.delayed(
