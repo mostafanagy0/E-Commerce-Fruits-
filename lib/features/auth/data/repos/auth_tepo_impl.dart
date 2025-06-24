@@ -119,7 +119,7 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<UesrEntity> getUserData({required String uId}) async {
     var userData = await dataBaseService.getData(
-        path: BackendEndpoints.getUserData, documentId: uId);
+        path: BackendEndpoints.getUserData, docuementId: uId);
     return UserModel.fromjson(userData);
   }
 

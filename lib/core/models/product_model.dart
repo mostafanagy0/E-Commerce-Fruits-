@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fruits_app/core/entites/product_input_entity.dart';
 import 'package:fruits_app/core/models/review_model.dart';
 
 class ProductInputModel {
@@ -55,6 +56,24 @@ class ProductInputModel {
       image: File(json['imageUrl']),
     );
   }
+
+ ProductInputEntity toEntity() {
+    return ProductInputEntity(
+        name: name,
+        code: code,
+        description: description,
+        price: price,
+        isFeatured: isFeatured,
+        image: image,
+        imageUrl: imageUrl,
+        expirationsMonths: expirationsMonths,
+        isOrganic: isOrganic,
+        numberOfCalories: numberOfCalories,
+        unitAmount: unitAmount,
+        sellingCount: sellingCount,
+        reviews: reviews.map((e) => e.toEntity()).toList());
+  }
+
   toMap() {
     return {
       'name': name,
