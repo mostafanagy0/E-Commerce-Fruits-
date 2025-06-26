@@ -6,7 +6,7 @@ abstract class DataBaseService {
   // Future<dynamic> getData({
   //   required String path,
   //   Map<String, dynamic>? query,
-  //   // if i want to get data specified
+  //                              // if i want to get data specified
 
   //   //  => required String documentId,
   //   //Map<String, dynamic>

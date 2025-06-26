@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:fruits_app/core/entites/product_input_entity.dart';
+import 'package:fruits_app/core/entites/product_entity.dart';
 import 'package:fruits_app/core/models/review_model.dart';
 
-class ProductInputModel {
+class ProductModel {
   final String name;
   final String code;
   final String description;
@@ -20,7 +20,7 @@ class ProductInputModel {
   final int sellingCount;
   final List<ReviewModel> reviews;
 
-  ProductInputModel({
+  ProductModel({
     required this.name,
     required this.code,
     required this.description,
@@ -36,8 +36,8 @@ class ProductInputModel {
     required this.sellingCount,
   });
 
-  factory ProductInputModel.fromJson(Map<String, dynamic> json) {
-    return ProductInputModel(
+  factory ProductModel.fromMap(Map<String, dynamic> json) {
+    return ProductModel(
       name: json['name'],
       code: json['code'],
       description: json['description'],
@@ -57,8 +57,8 @@ class ProductInputModel {
     );
   }
 
- ProductInputEntity toEntity() {
-    return ProductInputEntity(
+  ProductEntity toEntity() {
+    return ProductEntity(
         name: name,
         code: code,
         description: description,
@@ -74,7 +74,7 @@ class ProductInputModel {
         reviews: reviews.map((e) => e.toEntity()).toList());
   }
 
-  toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'name': name,
       'code': code,
