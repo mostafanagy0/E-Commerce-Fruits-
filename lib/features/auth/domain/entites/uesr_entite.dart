@@ -1,9 +1,13 @@
-// only represent data..
-
-class UesrEntity {
+class UserEntity {
   final String name;
   final String email;
-  final String uId;
+  final String id;
+  final String? token;
 
-  UesrEntity({required this.name, required this.email, required this.uId});
+  const UserEntity({
+    required this.name,
+    required this.email,
+    required this.id,
+    this.token,
+  });
 }

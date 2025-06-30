@@ -6,7 +6,7 @@ sealed class SignUpState {}
 final class SignUpInitial extends SignUpState {}
 
 final class SignUpSuccess extends SignUpState {
-  final UesrEntity uesrEntite;
+  final UserEntity uesrEntite;
 
   SignUpSuccess({required this.uesrEntite});
 }

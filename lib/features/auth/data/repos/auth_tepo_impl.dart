@@ -1,131 +1,51 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fruits_app/constants.dart';
-import 'package:fruits_app/core/errors/exce/Exceptions.dart';
 import 'package:fruits_app/core/errors/failures.dart';
-import 'package:fruits_app/core/services/database_service.dart';
-import 'package:fruits_app/core/services/firebase_auth_service.dart';
-import 'package:fruits_app/core/services/shered_ferfernces_singleton.dart';
-import 'package:fruits_app/core/utils/backend_endpoints.dart';
-import 'package:fruits_app/features/auth/data/models/user_model.dart';
+import 'package:fruits_app/core/networks/api_service.dart';
+import 'package:fruits_app/features/auth/data/models/login_request_model.dart';
+import 'package:fruits_app/features/auth/data/models/signup_request_model.dart';
 import 'package:fruits_app/features/auth/data/repos/auth_repo.dart';
 import 'package:fruits_app/features/auth/domain/entites/uesr_entite.dart';
 
-class AuthRepoImpl extends AuthRepo {
-  final FirebaseAuthService firebaseAuthService;
-  final DataBaseService dataBaseService;
+class AuthRepoImpl implements AuthRepo {
+  final ApiService apiService;
 
-  AuthRepoImpl(
-      {required this.dataBaseService, required this.firebaseAuthService});
+  AuthRepoImpl(this.apiService);
+
   @override
-  Future<Either<Failures, UesrEntity>> createUserWithEmailAndPassWord(
-      String email, String passWord, String name) async {
-    User? user;
+  Future<Either<Failures, UserEntity>> loginWithEmailAndPassword(
+      LoginRequestModel loginRequestModel) async {
     try {
-      user = await firebaseAuthService.createUserWithEmailAndPassWord(
-          email: email, passWord: passWord);
-      var uesrEntite = UesrEntity(name: name, email: email, uId: user.uid);
-      await addUserData(userEntity: uesrEntite);
-      return right(uesrEntite);
-    } on CustomException catch (e) {
-      if (user != null) {
-        await firebaseAuthService.deleteUser();
-      }
-      return left(
-        ServerFailure(e.message),
+      final response = await apiService.login(loginRequestModel);
+
+      final userEntity = UserEntity(
+        id: response.id,
+        email: response.email,
+        name: response.email.split('@').first,
+        token: response.token,
       );
+
+      return Right(userEntity);
     } catch (e) {
-      if (user != null) {
-        await firebaseAuthService.deleteUser();
-      }
-      log('Exiption in createUserWithEmailAndPassWord ${e.toString()}');
-      return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+      return Left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failures, UesrEntity>> signInWithEmailAndPassword(
-      String email, String passWord) async {
+  Future<Either<Failures, UserEntity>> signupWithEmailAndPassword(
+      SignupRequestModel signupRequestModel) async {
     try {
-      var user = await firebaseAuthService.signInWithEmailAndPassword(
-          email: email, passWord: passWord);
+      final response = await apiService.signup(signupRequestModel);
 
-      var uesrEntite = await getUserData(uId: user.uid);
-      await saveUserData(userEntity: uesrEntite);
-      return right(
-        uesrEntite,
+      final userEntity = UserEntity(
+        id: '',
+        email: signupRequestModel.email,
+        name: signupRequestModel.fullName,
+        token: null,
       );
-    } on CustomException catch (e) {
-      return left(
-        ServerFailure(e.message),
-      );
+
+      return Right(userEntity);
     } catch (e) {
-      log('Exiption in signInWithEmailAndPassword ${e.toString()}');
-      return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+      return Left(ServerFailure(e.toString()));
     }
-  }
-
-  @override
-  Future<Either<Failures, UesrEntity>> signInWithGoogle() async {
-    User? user;
-    try {
-      user = await firebaseAuthService.signInWithGoogle();
-      var uesrEntite = UserModel.fromFirebaseUser(user);
-      var isUsserExits = await dataBaseService.checkIfDataExists(
-          documentId: user.uid, path: BackendEndpoints.isUsserExits);
-      if (isUsserExits) {
-        await getUserData(uId: user.uid);
-      } else {
-        await addUserData(userEntity: uesrEntite);
-      }
-      return right(uesrEntite);
-    } catch (e) {
-      if (user != null) {
-        await firebaseAuthService.deleteUser();
-      }
-      log('Exiption in signInWithGoogle ${e.toString()}');
-      return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
-    }
-  }
-
-  @override
-  Future<Either<Failures, UesrEntity>> signInWithFacebook() async {
-    User? user;
-    try {
-      user = await firebaseAuthService.signInWithFacebook();
-      var uesrEntite = UserModel.fromFirebaseUser(user);
-      await addUserData(userEntity: uesrEntite);
-      return right(uesrEntite);
-    } catch (e) {
-      if (user != null) {
-        await firebaseAuthService.deleteUser();
-      }
-      log('Exiption in signInWithFacebook ${e.toString()}');
-      return left(ServerFailure('لقد حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
-    }
-  }
-
-  @override
-  Future addUserData({required UesrEntity userEntity}) async {
-    await dataBaseService.addData(
-        path: BackendEndpoints.addUserData,
-        data: UserModel.fromEntity(userEntity).toMap(),
-        documentId: userEntity.uId);
-  }
-
-  @override
-  Future<UesrEntity> getUserData({required String uId}) async {
-    var userData = await dataBaseService.getData(
-        path: BackendEndpoints.getUserData, docuementId: uId);
-    return UserModel.fromjson(userData);
-  }
-
-  @override
-  Future saveUserData({required UesrEntity userEntity}) async {
-    var jsonData = jsonEncode(UserModel.fromEntity(userEntity).toMap());
-    await Prefs.setString(kUserData, jsonData);
   }
 }

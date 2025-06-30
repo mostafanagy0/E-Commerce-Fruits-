@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_app/features/home/presentation/widgets/custom_bottom_navigation_bar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_app/core/cubit/products_cubit/products_cubit.dart';
+import 'package:fruits_app/core/helper_funcitons/functions/get_it.dart';
+import 'package:fruits_app/core/repos/product_repo.dart';
 import 'package:fruits_app/features/home/presentation/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-  static const routeName = 'HomeView';
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
-      body: SafeArea(child: HomeViewBody()),
+    return BlocProvider(
+      create: (context) => ProductsCubit(getIt.get<ProductRepo>()),
+      child: const HomeViewBody(),
     );
   }
 }

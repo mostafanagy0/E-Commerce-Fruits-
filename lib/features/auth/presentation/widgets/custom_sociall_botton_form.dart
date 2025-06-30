@@ -15,7 +15,7 @@ class CustomSocialLoginForm extends StatelessWidget {
           image: Assets.imagesGoogleIcon,
           title: 'تسجيل بواسطة جوجل',
           onPressed: () {
-            context.read<SigninCubit>().signInWithGoogle();
+          //  context.read<SigninCubit>().signInWithGoogle();
           },
         ),
         const SizedBox(height: 16),
@@ -29,7 +29,7 @@ class CustomSocialLoginForm extends StatelessWidget {
           image: Assets.imagesFacebokIcon,
           title: 'تسجيل بواسطة فيسبوك',
           onPressed: () {
-            context.read<SigninCubit>().signInWithFacebook();
+           // context.read<SigninCubit>().signInWithFacebook();
           },
         ),
       ],
