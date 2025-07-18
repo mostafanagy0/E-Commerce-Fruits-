@@ -6,11 +6,11 @@ import 'package:fruits_app/features/auth/data/models/signup_request_model.dart';
 import 'package:fruits_app/features/auth/data/models/signup_response_model.dart';
 import 'package:retrofit/retrofit.dart';
 
-part 'api_service.g.dart';
+part 'api_auth_service.g.dart';
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
-abstract class ApiService {
-  factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
+abstract class ApiAuthService {
+  factory ApiAuthService(Dio dio, {String baseUrl}) = _ApiAuthService;
 
   @POST(ApiConstants.loginUrl)
   Future<LoginResponseModel> login(

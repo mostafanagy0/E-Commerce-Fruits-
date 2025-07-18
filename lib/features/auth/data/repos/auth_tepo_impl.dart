@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
 import 'package:fruits_app/core/errors/failures.dart';
-import 'package:fruits_app/core/networks/api_service.dart';
+import 'package:fruits_app/core/networks/api_auth_service.dart';
 import 'package:fruits_app/features/auth/data/models/login_request_model.dart';
 import 'package:fruits_app/features/auth/data/models/signup_request_model.dart';
 import 'package:fruits_app/features/auth/data/repos/auth_repo.dart';
 import 'package:fruits_app/features/auth/domain/entites/uesr_entite.dart';
 
 class AuthRepoImpl implements AuthRepo {
-  final ApiService apiService;
+  final ApiAuthService apiService;
 
   AuthRepoImpl(this.apiService);
 

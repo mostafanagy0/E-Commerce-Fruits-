@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:fruits_app/core/networks/api_service.dart';
+import 'package:fruits_app/core/networks/api_auth_service.dart';
 import 'package:fruits_app/core/networks/dio_factory.dart';
 import 'package:fruits_app/features/auth/data/repos/auth_repo.dart';
 import 'package:fruits_app/features/auth/data/repos/auth_tepo_impl.dart';
@@ -11,10 +11,10 @@ void setupGetIt() {
   //dio & api service
   Dio dio = DioFactory.getDio();
   getIt.registerLazySingleton<Dio>(() => dio);
-  getIt.registerSingleton<ApiService>(ApiService(dio));
+  getIt.registerSingleton<ApiAuthService>(ApiAuthService(dio));
 
   getIt.registerSingleton<AuthRepo>(AuthRepoImpl(
-    getIt<ApiService>(),
+    getIt<ApiAuthService>(),
   ));
   // getIt.registerSingleton<ProductRepo>(ProductRepoImp(
   //   getIt<DataBaseService>(),
