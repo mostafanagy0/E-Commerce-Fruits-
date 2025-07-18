@@ -5,6 +5,7 @@ import 'package:fruits_app/core/helper_funcitons/functions/navigation.dart';
 import 'package:fruits_app/core/widgets/custom_progres_hud.dart';
 import 'package:fruits_app/features/auth/presentation/cubits/sign_in_cubit/signin_cubit.dart';
 import 'package:fruits_app/features/auth/presentation/widgets/signin_view_body.dart';
+import 'package:fruits_app/features/home/presentation/views/home_view.dart';
 import 'package:fruits_app/features/home/presentation/views/main_view.dart';
 
 class SigninViewBodyBlocConsumer extends StatelessWidget {
