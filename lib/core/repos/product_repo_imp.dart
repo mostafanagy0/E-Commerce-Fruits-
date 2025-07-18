@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:fruits_app/core/entites/product_entity.dart';
 import 'package:fruits_app/core/errors/failures.dart';
-import 'package:fruits_app/core/models/product_model.dart';
+import 'package:fruits_app/features/home/data/models/product_model.dart';
 import 'package:fruits_app/core/repos/product_repo.dart';
 import 'package:fruits_app/core/services/database_service.dart';
 import 'package:fruits_app/core/utils/backend_endpoints.dart';
