@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:fruits_app/core/models/product_model.dart';
 import 'package:fruits_app/core/networks/api_constants.dart';
-import 'package:fruits_app/features/auth/data/models/login_request_model.dart';
-import 'package:fruits_app/features/auth/data/models/login_response_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'api_get_products_service.g.dart';

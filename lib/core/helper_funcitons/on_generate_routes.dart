@@ -5,7 +5,7 @@ import 'package:fruits_app/features/auth/presentation/views/signup_view.dart';
 import 'package:fruits_app/features/best_selling_fruits/presentation/views/best_selling_view.dart';
 import 'package:fruits_app/features/onBording/presentation/views/on_bording_view.dart';
 
-Route<dynamic> onGenerateRoute(RouteSettings settings) {
+Route<dynamic>? onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case SplashView.routeName:
       return MaterialPageRoute(builder: (context) => const SplashView());
@@ -18,7 +18,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case SignupView.routeName:
       return MaterialPageRoute(builder: (context) => const SignupView());
     default:
-      return MaterialPageRoute(builder: (context) => const Scaffold());
+      return null;
   }
 }
  

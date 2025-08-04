@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_app/core/widgets/best_seller_grid_view.dart';
 import 'package:fruits_app/core/widgets/custom_search_text_filed.dart'
     show CustomSearchTextFiled;
 import 'package:fruits_app/features/home/presentation/widgets/best_seller_item_header.dart';
@@ -48,7 +47,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           child: BestSellerItemHeader(),
         ),
         SliverToBoxAdapter(child: SizedBox(height: 12)),
-        BestSellerGridView()
+        // BestSellerGridView(productModels: ,)
       ]),
     );
   }

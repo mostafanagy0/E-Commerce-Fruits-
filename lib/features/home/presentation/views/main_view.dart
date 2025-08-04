@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_app/core/helper_funcitons/functions/get_it.dart';
+import 'package:fruits_app/features/home/presentation/cubit/cubit/get_product_cubit.dart';
 import 'package:fruits_app/features/home/presentation/views/home_view.dart';
 import 'package:fruits_app/features/home/presentation/views/products_view.dart';
 import 'package:fruits_app/features/home/presentation/widgets/custom_bottom_navigation_bar.dart';
@@ -13,38 +16,38 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   int currentViewIndex = 0;
+
+  late final List<Widget> views;
+
+  @override
+  void initState() {
+    super.initState();
+    views = [
+      const HomeView(),
+      BlocProvider(
+        create: (context) => getIt<GetProductCubit>()..fetchProducts(),
+        child: const ProductsView(),
+      ),
+      // BlocProvider(
+      //   create: (context) => getIt<GetCartCubit>()..getCartItems(),
+      //   child: const CartView(),
+      // ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavigationBar(
         selectedIndex: currentViewIndex,
         onItemTaped: (index) {
-          currentViewIndex = index;
-          setState(() {});
+          setState(() => currentViewIndex = index);
         },
       ),
-      body: MainViewBody(
-        currentViewIndex: currentViewIndex,
+      body: IndexedStack(
+        index: currentViewIndex,
+        children: views,
       ),
-    );
-  }
-}
-
-class MainViewBody extends StatelessWidget {
-  const MainViewBody({
-    super.key,
-    required this.currentViewIndex,
-  });
-  final int currentViewIndex;
-  @override
-  Widget build(BuildContext context) {
-    return IndexedStack(
-      index: currentViewIndex,
-      children: const [
-        HomeView(),
-        ProductsView(),
-        //CartView(),
-      ],
     );
   }
 }

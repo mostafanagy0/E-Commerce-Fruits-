@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_app/core/models/product_model.dart';
 import 'package:fruits_app/core/utils/app_colors.dart';
-import 'package:fruits_app/core/utils/app_images.dart';
 import 'package:fruits_app/core/utils/app_text_style.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
+  const FruitItem({super.key, required this.productModel});
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +20,18 @@ class FruitItem extends StatelessWidget {
           Positioned.fill(
             child: Column(children: [
               const SizedBox(height: 20),
-              Image.asset(Assets.imagesWatermelonTest),
+              Image.network(productModel.image,
+                  height: 100, width: 100, fit: BoxFit.cover),
               const SizedBox(height: 24),
               ListTile(
-                title: const Text(
-                  'بطيخ',
+                title: Text(
+                  productModel.name,
+                  maxLines: 1,
                   style: TextStyles.semiBold16,
                 ),
                 subtitle: Text.rich(TextSpan(children: [
                   TextSpan(
-                      text: '20جنية',
+                      text: ' ${productModel.price.toString()}جنيه',
                       style: TextStyles.bold13W700
                           .copyWith(color: AppColors.secondryColor)),
                   const TextSpan(
